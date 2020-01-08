@@ -1,0 +1,39 @@
+﻿@model WebApplication9.ViewModels.LoginVM
+@{
+    ViewData["Title"] = "Prijava";
+}
+
+
+<link href="~/css/style1.css" rel="stylesheet">
+<style>
+    .field-validation-error {
+        color: darkred;
+     
+        
+    }
+</style>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div>Hotel "Holiday"</div>
+</div>
+<br>
+<form class="login" asp-action="Prijava" method="post">
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    }
+    <input asp-for="Username" placeholder="Username" autofocus />
+    <br />
+    @Html.ValidationMessageFor(model => model.Username)
+    <input asp-for="Password" placeholder="Password" />
+    <br />
+    @Html.ValidationMessageFor(model => model.Password)
+    <br />
+
+    <button type="submit" class="button">Prijavi se </button>
+    <p class="message">Niste registrovani? <a href="/Autentifikacija/Registracija">Registruj se</a></p>
+</form>
+
+
